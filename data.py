@@ -28,11 +28,13 @@ def easy_read(item):
 
 # Game class
 class Game:
+    # Game Constructor
     def __init__(self, id, name, genres, themes):
         self.name = name
         self.id = id
         self.genres = genres
         self.themes = themes
+    # What a Gane Object will print out
     def __str__(self):
         sgenres = ""
         for g in self.genres:
@@ -46,6 +48,9 @@ class Game:
             f"Genres: {sgenres}\n"
             f"Themes: {sthemes}\n"
         )
+    
+    # Uses the string list of themes to return list of corresponding IDs in order to compare 
+    # Since the where keyword doesnt accept genre name as an arguement
     def get_theme_id(self):
         themeID = []
         for t in self.themes:
@@ -56,6 +61,9 @@ class Game:
                 tid = item.get("id")
                 themeID.append(tid)
         return themeID
+    
+    # Uses the string list of themes to return list of corresponding IDs in order to compare 
+    # Since the where keyword doesnt accept genre name as an arguement
     def get_genre_id(self):
         genreID = []
         for g in self.genres:
@@ -67,6 +75,10 @@ class Game:
                 genreID.append(gid)
         return genreID
 
+    
+    # Takes in limit as an arguement, generates genre and theme id list using previous function
+    # Prompts the url to return a json with a name, genre, theme, and id with a set number of games based on limit
+    # Uses the id lists to set a filter
     def get_similar_games(self,limit):
         genre_list = self.get_genre_id()
         theme_list = self.get_theme_id()
