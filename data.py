@@ -28,13 +28,11 @@ def easy_read(item):
 
 # Game class
 class Game:
-    # Game Constructor
     def __init__(self, id, name, genres, themes):
         self.name = name
         self.id = id
         self.genres = genres
         self.themes = themes
-    # What a Gane Object will print out
     def __str__(self):
         sgenres = ""
         for g in self.genres:
@@ -46,11 +44,8 @@ class Game:
             f"Game ID: {self.id}\n"
             f"Name: {self.name}\n"
             f"Genres: {sgenres}\n"
-            f"Themes: {sthemes}\n"
+            f"Themes: {sthemes}"
         )
-    
-    # Uses the string list of themes to return list of corresponding IDs in order to compare 
-    # Since the where keyword doesnt accept genre name as an arguement
     def get_theme_id(self):
         themeID = []
         for t in self.themes:
@@ -61,9 +56,6 @@ class Game:
                 tid = item.get("id")
                 themeID.append(tid)
         return themeID
-    
-    # Uses the string list of themes to return list of corresponding IDs in order to compare 
-    # Since the where keyword doesnt accept genre name as an arguement
     def get_genre_id(self):
         genreID = []
         for g in self.genres:
@@ -75,10 +67,6 @@ class Game:
                 genreID.append(gid)
         return genreID
 
-    
-    # Takes in limit as an arguement, generates genre and theme id list using previous function
-    # Prompts the url to return a json with a name, genre, theme, and id with a set number of games based on limit
-    # Uses the id lists to set a filter
     def get_similar_games(self,limit):
         genre_list = self.get_genre_id()
         theme_list = self.get_theme_id()
@@ -94,7 +82,11 @@ class Game:
         raw_data = r.decode("utf-8")
         jdata = json.loads(raw_data)
         return jdata
-
+    # Gets similarity of games that share themes/genres outputs a number from 0-1 decimals included
+    def similarity_score(self, game):
+        tots = len(self.get_theme_id()) + len(self.get_genre_id())
+        stot = len(game.get_theme_id()) + len(game.get_genre_id())
+        return round(tots/stot, 2)
 
 # Main to test
 if __name__=='__main__':
@@ -107,4 +99,7 @@ if __name__=='__main__':
     data = game.get_similar_games(10)
     for g in data:
         print(easy_read(g))
+        sgame = easy_read(g)
+        print(f"Similarity Score: {game.similarity_score(sgame)}\n")
+
 
