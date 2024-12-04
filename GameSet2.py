@@ -1,10 +1,12 @@
 from data import Game
 
+# Node class holding the game and a pointer to the next node
 class Node(Game):
     def __init__(self, Game):
         self.Game = Game
         self.next = None
 
+# Linked List object with a pointer to the head and the Linked Lists similarity score
 class LinkedList(Game):
     def __init__(self, Game):
         self.head = None
@@ -24,6 +26,7 @@ class LinkedList(Game):
     def get_score(self):
         return self.score
 
+# Hash Table object that will be used to hold Linked Lists of games based on the similarity score
 class HashTable(LinkedList):
     def __init__(self, LinkedList):
         self.Table = []
