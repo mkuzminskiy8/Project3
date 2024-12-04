@@ -8,7 +8,7 @@ if __name__=='__main__':
         if GameToSelect == "DoneForNow":
             break
         else:
-            Choice = input("How do we want to do this? you may type either \"heap\" or \"set\"")
+            Choice = input("How do we want to do this? you may type either \"heap\" or \"set\": ")
             TimeStart = time.time()
             #Insert code here
             if Choice == "heap":
