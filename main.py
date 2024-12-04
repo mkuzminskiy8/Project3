@@ -12,9 +12,9 @@ if __name__=='__main__':
             TimeStart = time.time()
             #Insert code here
             if Choice == "heap":
-                GraphImplementation.WorkWithHeap(GameToSelect)
+                GeneralistFunctions.WorkWithHeap(GameToSelect)
             elif Choice == "set":
-                GraphImplementation.WorkWithSet(GameToSelect)
+                GeneralistFunctions.WorkWithSet(GameToSelect)
 
             TimeEnd = time.time()
 
