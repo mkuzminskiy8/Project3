@@ -1,16 +1,19 @@
 from data import Game
+import math
 
 # Node class holding the game and a pointer to the next node
-class Node(Game):
-    def __init__(self, Game):
-        self.Game = Game
+class Node:
+    def __init__(self, game):
+        self.game = game
         self.next = None
 
+    def get_game(self):
+        return self.game
+
 # Linked List object with a pointer to the head and the Linked Lists similarity score
-class LinkedList(Game):
-    def __init__(self, Game):
+class LinkedList:
+    def __init__(self):
         self.head = None
-        self.score = Game.similarity_score()
 
     #Code borrowed from https://www.datacamp.com/tutorial/python-linked-lists mostly as a refresher on how Python works
     def insert_end(self, Game):
@@ -23,17 +26,28 @@ class LinkedList(Game):
             temp = temp.next
         temp.next = new
 
-    def get_score(self):
-        return self.score
-
 # Hash Table object that will be used to hold Linked Lists of games based on the similarity score
-class HashTable(LinkedList):
+class HashTable:
     def __init__(self):
-        self.Table = []
+        self.table = [None] * 5
 
-    def hash_function(self, LinkedList):
-        scorehash = LinkedList.get_score()
+    def hash_function(self, score):
+        return int(math.ceil(score * 2))
 
-    def insert_list(self, LinkedList):
-        self.Table[LinkedList.get_score()] = LinkedList
+    def insert(self, game, score):
+        index = self.hash_function(score)
+        if self.table[index] is None:
+            new_list = LinkedList()
+            new_list.insert_end(game)
+            self.table[index] = new_list
+
+        else:
+            self.table[index].insert_end(game)
+
+    def print_out(self):
+        for items in self.table:
+            if items is not None:
+                while items.head is not None:
+                    print(items.head.get_game())
+                    items.head = items.head.next
 
