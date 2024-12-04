@@ -22,7 +22,7 @@ def getSimilarGamesToSource(self, SourceGame):
     return SimilarGamesToSource
 
 def WorkWithHeap(name):
-    SourceVertex = GraphImplementation.makeSourceVertex(name)
+    SourceVertex = GeneralistFunctions.makeSourceVertex(name)
     SimilarGamesToSource = GameHeap.getSimilarGamesToSource(SourceVertex)
     SimilarGamesToSource = GameHeap.buildHeap(SourceVertex, SimilarGamesToSource, len(SimilarGamesToSource)) #should heapify the list. 
     GameHeap.printHeap(SimilarGamesToSource, SimilarGamesToSource.size)
