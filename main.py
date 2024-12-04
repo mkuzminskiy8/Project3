@@ -1,4 +1,5 @@
-import GraphImplementation
+from GraphImplementation import GameInspector
+import time
 def main():
     inifnitum == 1
     while infinitum != 0:
@@ -6,4 +7,15 @@ def main():
         if GameToSelect == "DoneForNow":
             break
         else:
+            Choice = input("How do we want to do this? you may type either \"heap\" or \"set\"")
+            TimeStart = time.time()
+            #Insert code here
+            if Choice == "heap":
+                WorkWithHeap(GameToSelect)
+            elif Choice == "set":
+                WorkWithSet(GameToSelect)
+
+            TimeEnd = time.time()
+
+            print("That took " + (TimeEnd - TimeStart) + " long with your decision to go with " + Choice) 
             pass #when ready, make this game object by searching for the game in the data base. 
