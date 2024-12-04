@@ -88,6 +88,34 @@ class Game:
         stot = len(game.get_theme_id()) + len(game.get_genre_id())
         return round(tots/stot, 2)
 
+    def similarity_score_new(self, game):
+        similar_themes = 0
+        for theme in self.get_theme_id():
+            for theme2 in game.get_theme_id():
+                if theme2 < theme:
+                    continue
+                elif theme2 > theme:
+                    break
+                else:
+                    similar_themes += 1
+                    break
+
+        similar_genres = 0
+        for genre in self.get_genre_id():
+            for genre2 in game.get_genre_id():
+                if genre2 < genre:
+                    continue
+                elif genre2 > genre:
+                    break
+                else:
+                    similar_genres += 1
+                    break
+
+
+
+        return similar_genres + similar_themes
+
+
 # Main to test
 if __name__=='__main__':
     name = input("\nPlease enter name of a game: ")
@@ -100,6 +128,6 @@ if __name__=='__main__':
     for g in data:
         print(easy_read(g))
         sgame = easy_read(g)
-        print(f"Similarity Score: {game.similarity_score(sgame)}\n")
+        print(f"Similarity Score: {game.similarity_score_new(sgame)}\n")
 
 
