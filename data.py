@@ -28,9 +28,13 @@ def easy_read(item):
 def get_game(name):
     r = wrapper.api_request("games", f"fields name, genres.name, themes.name; where name = \"{name}\";  limit {1};")
     raw_data = r.decode("utf-8")
+    jdata = json.loads(raw_data)
+    if len(jdata) == 0:
+        return None
     jdata = json.loads(raw_data)[0]
     game = easy_read(jdata)
     return game
+
 
 
 # Game class
@@ -108,17 +112,9 @@ class Game:
 '''
 # Main to test
 if __name__=='__main__':
-    name = input("\nPlease enter name of a game: ")
-    print("\n")
-    r = wrapper.api_request("games", f"fields name, genres.name, themes.name; where name = \"{name}\";  limit {1};")
-    raw_data = r.decode("utf-8")
-    jdata = json.loads(raw_data)[0]
-    game = easy_read(jdata)
-    data = game.get_similar_games(10)
-    for g in data:
-        print(easy_read(g))
-        sgame = easy_read(g)
-        print(f"Similarity Score: {game.similarity_score(sgame)}\n")
+    name = input("Name: ")
+    print(get_game(name))
 '''
+
 
 
