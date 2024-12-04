@@ -1,6 +1,6 @@
 
 import time
-import GraphImplementation
+import GeneralistFunctions
 if __name__=='__main__':
     infinitum = 1
     while infinitum != 0:
