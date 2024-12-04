@@ -12,14 +12,16 @@ import GameSet
 
 
 class GameInspector(Game):
-    SourceVertex = null
+    SourceVertex = None
 
     SimilarGamesToSource = []
     def makeSourceVertex(name):
         SourceVertex = Game(name)
 
     def getSimilarGamesToSource(self):
-        SimilarGames = easy_read(SourceVertex.get_similar_games(9223372036854775807)) #That's integer.max, grab every single relevant game. 
+        data = game.get_similar_games(9223372036854775807)
+        for g in data:
+            SimilarGamesToSource.append(g)
 
     def HeapifyGames(arr):
         buildHeap(SimilarGamesToSource, SimilarGamesToSource.size) #should heapify the list. 
