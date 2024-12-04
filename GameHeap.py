@@ -25,6 +25,8 @@ def heapify(SourceGame, arr, N, i):
     if largest != i:
         arr[i], arr[largest] = arr[largest], arr[i]
         heapify(SourceGame, arr, N, largest)# Recursively heapify the affected sub-tree
+
+    return arr
  
 # Function to build a Max-Heap from the given array
  
@@ -39,6 +41,7 @@ def buildHeap(SourceGame, arr, N):
     # each node
     for i in range(startIdx, -1, -1):
         heapify(SourceGame, arr, N, i)
+    return arr
  
 # A utility function to print the array
 # representation of Heap

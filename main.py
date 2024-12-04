@@ -1,19 +1,20 @@
-from GraphImplementation import GameInspector
+
 import time
-def main():
-    inifnitum == 1
+import GeneralistFunctions
+if __name__=='__main__':
+    infinitum = 1
     while infinitum != 0:
         GameToSelect = input("What game have you just finished? Alternatively, type \"DoneForNow\" to end: ")
         if GameToSelect == "DoneForNow":
             break
         else:
-            Choice = input("How do we want to do this? you may type either \"heap\" or \"set\"")
+            Choice = input("How do we want to do this? you may type either \"heap\" or \"set\": ")
             TimeStart = time.time()
             #Insert code here
             if Choice == "heap":
-                WorkWithHeap(GameToSelect)
+                GeneralistFunctions.WorkWithHeap(GameToSelect)
             elif Choice == "set":
-                WorkWithSet(GameToSelect)
+                GeneralistFunctions.WorkWithSet(GameToSelect)
 
             TimeEnd = time.time()
 

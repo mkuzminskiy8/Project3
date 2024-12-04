@@ -1,7 +1,6 @@
-import requests
+
 from requests import post
 import json
-import codecs
 from igdb.wrapper import IGDBWrapper
 
 # Pulls authorization code everytime to prevent timing out
@@ -25,6 +24,14 @@ def easy_read(item):
         themes.append(t.get("name"))
     game = Game(id, name, genres, themes)
     return game
+
+def get_game(name):
+    r = wrapper.api_request("games", f"fields name, genres.name, themes.name; where name = \"{name}\";  limit {1};")
+    raw_data = r.decode("utf-8")
+    jdata = json.loads(raw_data)[0]
+    game = easy_read(jdata)
+    return game
+
 
 # Game class
 class Game:
@@ -84,7 +91,9 @@ class Game:
         return jdata
     # Gets similarity of games that share themes/genres outputs a number from 0-1 decimals included
     def similarity_score(self, game):
-        tots = len(self.get_theme_id()) + len(self.get_genre_id())
+        sizea = len(self.get_theme_id()) + len(self.get_genre_id())
+        sizeb = len(game.get_theme_id()) + len(game.get_genre_id())
+        tot = max(sizea, sizeb)
         stot = 0
         for i in game.get_genre_id():
             for j in self.get_genre_id():
@@ -94,8 +103,9 @@ class Game:
             for j in self.get_theme_id():
                 if i==j :
                     stot = stot + 1
-        return round(stot/tots, 2)
+        return round(stot/tot, 2)
 
+'''
 # Main to test
 if __name__=='__main__':
     name = input("\nPlease enter name of a game: ")
@@ -109,6 +119,6 @@ if __name__=='__main__':
         print(easy_read(g))
         sgame = easy_read(g)
         print(f"Similarity Score: {game.similarity_score(sgame)}\n")
-    
+'''
 
 
