@@ -21,7 +21,7 @@ class GameInspector(Game):
     def getSimilarGamesToSource(self):
         data = game.get_similar_games(9223372036854775807)
         for g in data:
-            SimilarGamesToSource.append(g)
+            SimilarGamesToSource.append(easy_read(g))
 
     def HeapifyGames(arr):
         buildHeap(SimilarGamesToSource, SimilarGamesToSource.size) #should heapify the list. 
