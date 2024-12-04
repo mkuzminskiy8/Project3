@@ -11,35 +11,31 @@ import GameSet
 #Ergo, It would probably be more useful for me to make the algorithms which will first create a tree of all games similar to this game, and THEN generate a MST from that tree.
 
 
-class GameInspector(Game):
-    SourceVertex = None
+def makeSourceVertex(name):
+    return get_game(name) #The game object the user searched for
 
+def getSimilarGamesToSource(self, SourceGame):
     SimilarGamesToSource = []
-    def makeSourceVertex(name):
-        SourceVertex = Game(name)
+    data = SourceGame.get_similar_games(9223372036854775807)
+    for g in data:
+        SimilarGamesToSource.append(easy_read(g))
+    return SimilarGamesToSource
 
-    def getSimilarGamesToSource(self):
-        data = game.get_similar_games(9223372036854775807)
-        for g in data:
-            SimilarGamesToSource.append(easy_read(g))
+def WorkWithHeap(name):
+    SourceVertex = makeSourceVertex(name)
+    SimilarGamesToSource = getSimilarGamesToSource(SourceVertex)
+    buildHeap(SourceVertex, SimilarGamesToSource, len(SimilarGamesToSource)) #should heapify the list. 
+    HeapifyGames(SimilarGamesToSource)
+    printHeap(SimilarGamesToSource, SimilarGamesToSource.size)
 
-    def HeapifyGames(arr):
-        buildHeap(SimilarGamesToSource, SimilarGamesToSource.size) #should heapify the list. 
-
-    def WorkWithHeap(name):
-        makeSourceVertex(name)
-        getSimilarGamesToSource()
-        HeapifyGames(SimilarGamesToSource)
-        printHeap(SimilarGamesToSource, SimilarGamesToSource.size)
-
-    def SetifyGames(arr):
-        pass
+def SetifyGames(arr):
+    pass
     
-    def WorkWithSet(name):
-        makeSourceVertex(name)
-        getSimilarGamesToSource()
-        SetifyGames(arr)
-        printSet() #FIXME: Correct the arguments here.
+def WorkWithSet(name):
+    makeSourceVertex(name)
+    getSimilarGamesToSource()
+    SetifyGames(arr)
+    printSet() #FIXME: Correct the arguments here.
 
 
 
