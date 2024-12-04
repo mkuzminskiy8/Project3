@@ -1,6 +1,6 @@
 #Michael Buch
 #Much less of a GraphImplementation Module and much more of a "Generalist functions" module.
-from data import Game
+import data
 import GameHeap
 import GameSet
 
@@ -12,30 +12,29 @@ import GameSet
 
 
 def makeSourceVertex(name):
-    return get_game(name) #The game object the user searched for
+    return data.get_game(name) #The game object the user searched for
 
 def getSimilarGamesToSource(self, SourceGame):
     SimilarGamesToSource = []
     data = SourceGame.get_similar_games(9223372036854775807)
     for g in data:
-        SimilarGamesToSource.append(easy_read(g))
+        SimilarGamesToSource.append(data.easy_read(g))
     return SimilarGamesToSource
 
 def WorkWithHeap(name):
-    SourceVertex = makeSourceVertex(name)
-    SimilarGamesToSource = getSimilarGamesToSource(SourceVertex)
-    buildHeap(SourceVertex, SimilarGamesToSource, len(SimilarGamesToSource)) #should heapify the list. 
-    HeapifyGames(SimilarGamesToSource)
-    printHeap(SimilarGamesToSource, SimilarGamesToSource.size)
+    SourceVertex = GraphImplementation.makeSourceVertex(name)
+    SimilarGamesToSource = GameHeap.getSimilarGamesToSource(SourceVertex)
+    SimilarGamesToSource = GameHeap.buildHeap(SourceVertex, SimilarGamesToSource, len(SimilarGamesToSource)) #should heapify the list. 
+    GameHeap.printHeap(SimilarGamesToSource, SimilarGamesToSource.size)
 
-def SetifyGames(arr):
-    pass
+#def SetifyGames(arr):
+    #pass
     
-def WorkWithSet(name):
-    makeSourceVertex(name)
-    getSimilarGamesToSource()
-    SetifyGames(arr)
-    printSet() #FIXME: Correct the arguments here.
+#def WorkWithSet(name):
+    #makeSourceVertex(name)
+    #getSimilarGamesToSource()
+    #SetifyGames(arr)
+    #printSet() #FIXME: Correct the arguments here.
 
 
 
