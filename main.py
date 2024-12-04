@@ -1,7 +1,8 @@
-from GraphImplementation import GameInspector
+
 import time
-def main():
-    inifnitum == 1
+import GraphImplementation
+if __name__=='__main__':
+    infinitum = 1
     while infinitum != 0:
         GameToSelect = input("What game have you just finished? Alternatively, type \"DoneForNow\" to end: ")
         if GameToSelect == "DoneForNow":
@@ -11,9 +12,9 @@ def main():
             TimeStart = time.time()
             #Insert code here
             if Choice == "heap":
-                WorkWithHeap(GameToSelect)
+                GraphImplementation.WorkWithHeap(GameToSelect)
             elif Choice == "set":
-                WorkWithSet(GameToSelect)
+                GraphImplementation.WorkWithSet(GameToSelect)
 
             TimeEnd = time.time()
 
