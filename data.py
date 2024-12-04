@@ -105,7 +105,7 @@ class Game:
                     stot = stot + 1
         return round(stot/tot, 2)
 
-
+'''
 # Main to test
 if __name__=='__main__':
     name = input("\nPlease enter name of a game: ")
@@ -115,11 +115,10 @@ if __name__=='__main__':
     jdata = json.loads(raw_data)[0]
     game = easy_read(jdata)
     data = game.get_similar_games(10)
-    print(game)
     for g in data:
         print(easy_read(g))
         sgame = easy_read(g)
         print(f"Similarity Score: {game.similarity_score(sgame)}\n")
-
+'''
 
 
