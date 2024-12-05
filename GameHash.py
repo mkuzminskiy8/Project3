@@ -52,7 +52,7 @@ class HashTable:
                 self.table.append(new_list)
 
     def print_out(self):
-
+        print("Here's the list of games you should try:")
         for items in self.table:
             if items is not None:
                 while items.head is not None:
