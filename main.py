@@ -16,11 +16,11 @@ if __name__=='__main__':
             if Choice == "heap":
                 if GeneralistFunctions.WorkWithHeap(GameToSelect, Num_Games) != None:
                     TimeEnd = time.perf_counter()
-                    print(f"That took {round(TimeEnd - TimeStart, 2)} long with your decision to go with {Choice}")
+                    print(f"That took {round(TimeEnd - TimeStart, 2)} seconds long with your decision to go with {Choice}")
             elif Choice == "hash table":
                 if GeneralistFunctions.WorkWithSet(GameToSelect, Num_Games) != None:
                     TimeEnd = time.perf_counter()
-                    print(f"That took {round(TimeEnd - TimeStart, 2)} long with your decision to go with {Choice}")
+                    print(f"That took {round(TimeEnd - TimeStart, 2)} seconds long with your decision to go with {Choice}")
 
 
 
