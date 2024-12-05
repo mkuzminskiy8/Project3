@@ -18,8 +18,8 @@ class LinkedList:
 
     #Code borrowed from https://www.datacamp.com/tutorial/python-linked-lists mostly as a refresher on how Python works
     #This code just checks is list is empty and inserts to the end of it if not
-    def insert_end(self, Game):
-        new = Node(Game)
+    def insert_end(self, game):
+        new = Node(game)
         if self.head is None:
             self.head = new
             return
