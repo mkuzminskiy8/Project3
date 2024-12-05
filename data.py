@@ -108,12 +108,5 @@ class Game:
                     stot = stot + 1
         return round(stot/tot, 2)
 
-'''
-# Main to test
-if __name__=='__main__':
-    name = input("Name: ")
-    print(get_game(name))
-'''
-
 
 
