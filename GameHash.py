@@ -49,7 +49,7 @@ class HashTable:
                 index = len(self.table) - 1
                 new_list = LinkedList(score)
                 new_list.insert_end(game)
-                self.table[index] = new_list
+                self.table.append(new_list)
 
     def print_out(self):
 
@@ -57,4 +57,5 @@ class HashTable:
             if items is not None:
                 while items.head is not None:
                     print(items.head.get_game())
+                    print()
                     items.head = items.head.next

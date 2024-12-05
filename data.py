@@ -52,7 +52,6 @@ class Game:
         for t in self.themes:
             sthemes = sthemes + t + " "
         return(
-            f"Game ID: {self.id}\n"
             f"Name: {self.name}\n"
             f"Genres: {sgenres}\n"
             f"Themes: {sthemes}"
