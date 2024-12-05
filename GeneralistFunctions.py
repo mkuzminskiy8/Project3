@@ -32,14 +32,13 @@ def WorkWithHeap(name):
                                               len(SimilarGamesToSource))  # should heapify the list.
     GameHeap.printHeap(SourceVertex, SimilarGamesToSource, len(SimilarGamesToSource))
 
-# def SetifyGames(arr):
-# pass
-
-# def WorkWithSet(name):
-# makeSourceVertex(name)
-# getSimilarGamesToSource()
-# SetifyGames(arr)
-# printSet() #FIXME: Correct the arguments here.
+def WorkWithSet(name):
+    table = GameSet.HashTable()
+    source = makeSourceVertex(name)
+    similar_games = getSimilarGamesToSource(source)
+    for g in similar_games:
+        table.insert(g, source.similarity_score(g))
+    table.print_out()
 
 
 
